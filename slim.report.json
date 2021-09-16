@@ -1,0 +1,464 @@
+{
+  "version": "1.0",
+  "engine": "linux|Transformer|1.36.4|8e0e0a59720bb95c708c046cf9ec71b4939803da|2021-09-07_08:07:15AM",
+  "containerized": false,
+  "host_distro": {
+    "name": "Ubuntu",
+    "version": "20.04",
+    "display_name": "Ubuntu 20.04.3 LTS"
+  },
+  "type": "build",
+  "state": "done",
+  "target_reference": "f76f959b2a49",
+  "system": {
+    "type": "Linux",
+    "release": "5.10.16.3-microsoft-standard-WSL2",
+    "distro": {
+      "name": "Ubuntu",
+      "version": "16.04",
+      "display_name": "Ubuntu 16.04.6 LTS"
+    }
+  },
+  "source_image": {
+    "identity": {
+      "id": "sha256:f76f959b2a4947330df7b5878e81dc268f19f3fa4cef9d1ac8a992d2776eab73",
+      "tags": [
+        "3.4"
+      ],
+      "names": [
+        "mongo:3.4"
+      ],
+      "digests": [
+        "sha256:d314f7eca9d3f825d091b77c40d2f3c9d6fff4de88dde2962527353476f107ba"
+      ],
+      "full_digests": [
+        "mongo@sha256:d314f7eca9d3f825d091b77c40d2f3c9d6fff4de88dde2962527353476f107ba"
+      ]
+    },
+    "size": 431228981,
+    "size_human": "431 MB",
+    "create_time": "2020-01-25T02:28:07Z",
+    "docker_version": "18.06.1-ce",
+    "architecture": "amd64",
+    "exposed_ports": [
+      "27017/tcp"
+    ],
+    "os": "linux",
+    "volumes": [
+      "/data/configdb",
+      "/data/db"
+    ],
+    "env_vars": [
+      "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+      "GOSU_VERSION=1.11",
+      "JSYAML_VERSION=3.13.0",
+      "GPG_KEYS=0C49F3730359A14518585931BC711F9BA15703C6",
+      "MONGO_PACKAGE=mongodb-org",
+      "MONGO_REPO=repo.mongodb.org",
+      "MONGO_MAJOR=3.4",
+      "MONGO_VERSION=3.4.24"
+    ],
+    "container_entry": {
+      "exe_path": ""
+    }
+  },
+  "minified_image_size": 65971107,
+  "minified_image_size_human": "66 MB",
+  "minified_image": "mongo.slim",
+  "minified_image_has_data": true,
+  "minified_by": 6.536633999487078,
+  "artifact_location": "/tmp/docker-slim-state/.docker-slim-state/images/f76f959b2a4947330df7b5878e81dc268f19f3fa4cef9d1ac8a992d2776eab73/artifacts",
+  "container_report_name": "creport.json",
+  "seccomp_profile_name": "mongo-seccomp.json",
+  "apparmor_profile_name": "mongo-apparmor-profile",
+  "image_stack": [
+    {
+      "is_top_image": true,
+      "id": "sha256:f76f959b2a4947330df7b5878e81dc268f19f3fa4cef9d1ac8a992d2776eab73",
+      "full_name": "mongo:3.4",
+      "repo_name": "mongo",
+      "version_tag": "3.4",
+      "raw_tags": [
+        "mongo:3.4"
+      ],
+      "create_time": "2020-01-25T02:28:07Z",
+      "new_size": 431228981,
+      "new_size_human": "431 MB",
+      "instructions": [
+        {
+          "type": "ADD",
+          "time": "2020-01-16T01:21:30Z",
+          "is_nop": true,
+          "local_image_exists": false,
+          "layer_index": 0,
+          "size": 123586254,
+          "size_human": "124 MB",
+          "params": "file:4b2eb5cd0b37ca0154f3c5ad9212f5bc7244a35806395a9c76a96723d708b83a in /",
+          "command_snippet": "ADD file:4b2eb5cd0b37ca0154f3c5ad9212f5bc724...",
+          "command_all": "ADD file:4b2eb5cd0b37ca0154f3c5ad9212f5bc7244a35806395a9c76a96723d708b83a /",
+          "target": "/",
+          "source_type": "file"
+        },
+        {
+          "type": "RUN",
+          "time": "2020-01-16T01:21:31Z",
+          "is_nop": false,
+          "local_image_exists": false,
+          "layer_index": 0,
+          "size": 0,
+          "command_snippet": "RUN rm -rf /var/lib/apt/lists/*",
+          "command_all": "RUN rm -rf /var/lib/apt/lists/*",
+          "system_commands": [
+            "rm -rf /var/lib/apt/lists/*"
+          ]
+        },
+        {
+          "type": "RUN",
+          "time": "2020-01-16T01:21:31Z",
+          "is_nop": false,
+          "local_image_exists": false,
+          "layer_index": 0,
+          "size": 745,
+          "size_human": "745 B",
+          "command_snippet": "RUN set -xe && \\\n\techo '#!/bin/sh' > /usr/sb...",
+          "command_all": "RUN set -xe && \\\n\techo '#!/bin/sh' > /usr/sbin/policy-rc.d && \\\n\techo 'exit 101' >> /usr/sbin/policy-rc.d && \\\n\tchmod +x /usr/sbin/policy-rc.d && \\\n\tdpkg-divert --local --rename --add /sbin/initctl && \\\n\tcp -a /usr/sbin/policy-rc.d /sbin/initctl && \\\n\tsed -i 's/^exit.*/exit 0/' /sbin/initctl && \\\n\techo 'force-unsafe-io' > /etc/dpkg/dpkg.cfg.d/docker-apt-speedup && \\\n\techo 'DPkg::Post-Invoke { \"rm -f /var/cache/apt/archives/*.deb /var/cache/apt/archives/partial/*.deb /var/cache/apt/*.bin || true\"; };' > /etc/apt/apt.conf.d/docker-clean && \\\n\techo 'APT::Update::Post-Invoke { \"rm -f /var/cache/apt/archives/*.deb /var/cache/apt/archives/partial/*.deb /var/cache/apt/*.bin || true\"; };' >> /etc/apt/apt.conf.d/docker-clean && \\\n\techo 'Dir::Cache::pkgcache \"\"; Dir::Cache::srcpkgcache \"\";' >> /etc/apt/apt.conf.d/docker-clean && \\\n\techo 'Acquire::Languages \"none\";' > /etc/apt/apt.conf.d/docker-no-languages && \\\n\techo 'Acquire::GzipIndexes \"true\"; Acquire::CompressionTypes::Order:: \"gz\";' > /etc/apt/apt.conf.d/docker-gzip-indexes && \\\n\techo 'Apt::AutoRemove::SuggestsImportant \"false\";' > /etc/apt/apt.conf.d/docker-autoremove-suggests",
+          "system_commands": [
+            "set -xe",
+            "echo '#!/bin/sh' > /usr/sbin/policy-rc.d",
+            "echo 'exit 101' >> /usr/sbin/policy-rc.d",
+            "chmod +x /usr/sbin/policy-rc.d",
+            "dpkg-divert --local --rename --add /sbin/initctl",
+            "cp -a /usr/sbin/policy-rc.d /sbin/initctl",
+            "sed -i 's/^exit.*/exit 0/' /sbin/initctl",
+            "echo 'force-unsafe-io' > /etc/dpkg/dpkg.cfg.d/docker-apt-speedup",
+            "echo 'DPkg::Post-Invoke { \"rm -f /var/cache/apt/archives/*.deb /var/cache/apt/archives/partial/*.deb /var/cache/apt/*.bin || true\"; };' > /etc/apt/apt.conf.d/docker-clean",
+            "echo 'APT::Update::Post-Invoke { \"rm -f /var/cache/apt/archives/*.deb /var/cache/apt/archives/partial/*.deb /var/cache/apt/*.bin || true\"; };' >> /etc/apt/apt.conf.d/docker-clean",
+            "echo 'Dir::Cache::pkgcache \"\"; Dir::Cache::srcpkgcache \"\";' >> /etc/apt/apt.conf.d/docker-clean",
+            "echo 'Acquire::Languages \"none\";' > /etc/apt/apt.conf.d/docker-no-languages",
+            "echo 'Acquire::GzipIndexes \"true\"; Acquire::CompressionTypes::Order:: \"gz\";' > /etc/apt/apt.conf.d/docker-gzip-indexes",
+            "echo 'Apt::AutoRemove::SuggestsImportant \"false\";' > /etc/apt/apt.conf.d/docker-autoremove-suggests"
+          ]
+        },
+        {
+          "type": "RUN",
+          "time": "2020-01-16T01:21:32Z",
+          "is_nop": false,
+          "local_image_exists": false,
+          "layer_index": 0,
+          "size": 7,
+          "size_human": "7 B",
+          "command_snippet": "RUN mkdir -p /run/systemd && \\\n\techo 'docker...",
+          "command_all": "RUN mkdir -p /run/systemd && \\\n\techo 'docker' > /run/systemd/container",
+          "system_commands": [
+            "mkdir -p /run/systemd",
+            "echo 'docker' > /run/systemd/container"
+          ]
+        },
+        {
+          "type": "CMD",
+          "time": "2020-01-16T01:21:32Z",
+          "is_nop": true,
+          "is_exec_form": true,
+          "local_image_exists": false,
+          "layer_index": 0,
+          "size": 0,
+          "params": "[\"/bin/bash\"]",
+          "command_snippet": "CMD [\"/bin/bash\"]",
+          "command_all": "CMD [\"/bin/bash\"]"
+        },
+        {
+          "type": "RUN",
+          "time": "2020-01-16T03:22:27Z",
+          "is_nop": false,
+          "local_image_exists": false,
+          "layer_index": 0,
+          "size": 329947,
+          "size_human": "330 kB",
+          "command_snippet": "RUN groupadd -r mongodb && \\\n\tuseradd -r -g ...",
+          "command_all": "RUN groupadd -r mongodb && \\\n\tuseradd -r -g mongodb mongodb",
+          "system_commands": [
+            "groupadd -r mongodb",
+            "useradd -r -g mongodb mongodb"
+          ]
+        },
+        {
+          "type": "RUN",
+          "time": "2020-01-16T03:22:35Z",
+          "is_nop": false,
+          "local_image_exists": false,
+          "layer_index": 0,
+          "size": 7025275,
+          "size_human": "7.0 MB",
+          "command_snippet": "RUN set -eux; \tapt-get update; \tapt-get inst...",
+          "command_all": "RUN set -eux; \tapt-get update; \tapt-get install -y --no-install-recommends \t\tca-certificates \t\tjq \t\tnumactl \t; \tif ! command -v ps > /dev/null; then \t\tapt-get install -y --no-install-recommends procps; \tfi; \trm -rf /var/lib/apt/lists/*",
+          "system_commands": [
+            "set -eux",
+            "apt-get update",
+            "apt-get install -y --no-install-recommends ca-certificates jq numactl",
+            "if ! command -v ps > /dev/null",
+            "then apt-get install -y --no-install-recommends procps",
+            "fi",
+            "rm -rf /var/lib/apt/lists/*"
+          ]
+        },
+        {
+          "type": "ENV",
+          "time": "2020-01-16T03:22:36Z",
+          "is_nop": true,
+          "local_image_exists": false,
+          "layer_index": 0,
+          "size": 0,
+          "params": "GOSU_VERSION=1.11",
+          "command_snippet": "ENV GOSU_VERSION=1.11",
+          "command_all": "ENV GOSU_VERSION=1.11"
+        },
+        {
+          "type": "ENV",
+          "time": "2020-01-16T03:22:36Z",
+          "is_nop": true,
+          "local_image_exists": false,
+          "layer_index": 0,
+          "size": 0,
+          "params": "JSYAML_VERSION=3.13.0",
+          "command_snippet": "ENV JSYAML_VERSION=3.13.0",
+          "command_all": "ENV JSYAML_VERSION=3.13.0"
+        },
+        {
+          "type": "RUN",
+          "time": "2020-01-16T03:22:47Z",
+          "is_nop": false,
+          "local_image_exists": false,
+          "layer_index": 0,
+          "size": 3535319,
+          "size_human": "3.5 MB",
+          "command_snippet": "RUN set -ex; \t\tsavedAptMark=\"$(apt-mark show...",
+          "command_all": "RUN set -ex; \t\tsavedAptMark=\"$(apt-mark showmanual)\"; \tapt-get update; \tapt-get install -y --no-install-recommends \t\twget \t; \tif ! command -v gpg > /dev/null; then \t\tapt-get install -y --no-install-recommends gnupg dirmngr; \t\tsavedAptMark=\"$savedAptMark gnupg dirmngr\"; \telif gpg --version | grep -q '^gpg (GnuPG) 1\\.'; then \t\tapt-get install -y --no-install-recommends gnupg-curl; \tfi; \trm -rf /var/lib/apt/lists/*; \t\tdpkgArch=\"$(dpkg --print-architecture | awk -F- '{ print $NF }')\"; \twget -O /usr/local/bin/gosu \"https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$dpkgArch\"; \twget -O /usr/local/bin/gosu.asc \"https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$dpkgArch.asc\"; \texport GNUPGHOME=\"$(mktemp -d)\"; \tgpg --batch --keyserver hkps://keys.openpgp.org --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4; \tgpg --batch --verify /usr/local/bin/gosu.asc /usr/local/bin/gosu; \tcommand -v gpgconf && \\\n\tgpgconf --kill all || :; \trm -r \"$GNUPGHOME\" /usr/local/bin/gosu.asc; \tchmod +x /usr/local/bin/gosu; \tgosu --version; \tgosu nobody true; \t\twget -O /js-yaml.js \"https://github.com/nodeca/js-yaml/raw/${JSYAML_VERSION}/dist/js-yaml.js\"; \t\tapt-mark auto '.*' > /dev/null; \tapt-mark manual $savedAptMark > /dev/null; \tapt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false",
+          "system_commands": [
+            "set -ex; savedAptMark=\"$(apt-mark showmanual)\"; apt-get update; apt-get install -y --no-install-recommends wget ; if ! command -v gpg > /dev/null; then apt-get install -y --no-install-recommends gnupg dirmngr; savedAptMark=\"$savedAptMark gnupg dirmngr\"; elif gpg --version | grep -q '^gpg (GnuPG) 1.'; then apt-get install -y --no-install-recommends gnupg-curl; fi; rm -rf /var/lib/apt/lists/*; dpkgArch=\"$(dpkg --print-architecture | awk -F- '{ print $NF }')\"; wget -O /usr/local/bin/gosu \"https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$dpkgArch\"; wget -O /usr/local/bin/gosu.asc \"https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$dpkgArch.asc\"; export GNUPGHOME=\"$(mktemp -d)\"; gpg --batch --keyserver hkps://keys.openpgp.org --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4; gpg --batch --verify /usr/local/bin/gosu.asc /usr/local/bin/gosu; command -v gpgconf",
+            "gpgconf --kill all || :; rm -r \"$GNUPGHOME\" /usr/local/bin/gosu.asc; chmod +x /usr/local/bin/gosu; gosu --version; gosu nobody true; wget -O /js-yaml.js \"https://github.com/nodeca/js-yaml/raw/${JSYAML_VERSION}/dist/js-yaml.js\"; apt-mark auto '.*' > /dev/null; apt-mark manual $savedAptMark > /dev/null; apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false"
+          ]
+        },
+        {
+          "type": "RUN",
+          "time": "2020-01-16T03:22:48Z",
+          "is_nop": false,
+          "local_image_exists": false,
+          "layer_index": 0,
+          "size": 0,
+          "command_snippet": "RUN mkdir /docker-entrypoint-initdb.d",
+          "command_all": "RUN mkdir /docker-entrypoint-initdb.d",
+          "system_commands": [
+            "mkdir /docker-entrypoint-initdb.d"
+          ]
+        },
+        {
+          "type": "ENV",
+          "time": "2020-01-16T03:22:48Z",
+          "is_nop": true,
+          "local_image_exists": false,
+          "layer_index": 0,
+          "size": 0,
+          "params": "GPG_KEYS=0C49F3730359A14518585931BC711F9BA15703C6",
+          "command_snippet": "ENV GPG_KEYS=0C49F3730359A14518585931BC711F9...",
+          "command_all": "ENV GPG_KEYS=0C49F3730359A14518585931BC711F9BA15703C6"
+        },
+        {
+          "type": "RUN",
+          "time": "2020-01-16T03:22:49Z",
+          "is_nop": false,
+          "local_image_exists": false,
+          "layer_index": 0,
+          "size": 2316,
+          "size_human": "2.3 kB",
+          "command_snippet": "RUN set -ex; \texport GNUPGHOME=\"$(mktemp -d)...",
+          "command_all": "RUN set -ex; \texport GNUPGHOME=\"$(mktemp -d)\"; \tfor key in $GPG_KEYS; do \t\tgpg --batch --keyserver ha.pool.sks-keyservers.net --recv-keys \"$key\"; \tdone; \tgpg --batch --export $GPG_KEYS > /etc/apt/trusted.gpg.d/mongodb.gpg; \tcommand -v gpgconf && \\\n\tgpgconf --kill all || :; \trm -r \"$GNUPGHOME\"; \tapt-key list",
+          "system_commands": [
+            "set -ex; export GNUPGHOME=\"$(mktemp -d)\"; for key in $GPG_KEYS; do gpg --batch --keyserver ha.pool.sks-keyservers.net --recv-keys \"$key\"; done; gpg --batch --export $GPG_KEYS > /etc/apt/trusted.gpg.d/mongodb.gpg; command -v gpgconf",
+            "gpgconf --kill all || :; rm -r \"$GNUPGHOME\"; apt-key list"
+          ]
+        },
+        {
+          "type": "ARG",
+          "time": "2020-01-16T03:22:49Z",
+          "is_nop": true,
+          "local_image_exists": false,
+          "layer_index": 0,
+          "size": 0,
+          "params": "MONGO_PACKAGE=mongodb-org",
+          "command_snippet": "ARG MONGO_PACKAGE=mongodb-org",
+          "command_all": "ARG MONGO_PACKAGE=mongodb-org"
+        },
+        {
+          "type": "ARG",
+          "time": "2020-01-16T03:22:49Z",
+          "is_nop": true,
+          "local_image_exists": false,
+          "layer_index": 0,
+          "size": 0,
+          "params": "MONGO_REPO=repo.mongodb.org",
+          "command_snippet": "ARG MONGO_REPO=repo.mongodb.org",
+          "command_all": "ARG MONGO_REPO=repo.mongodb.org"
+        },
+        {
+          "type": "ENV",
+          "time": "2020-01-16T03:22:49Z",
+          "is_nop": true,
+          "local_image_exists": false,
+          "layer_index": 0,
+          "size": 0,
+          "params": "MONGO_PACKAGE=mongodb-org MONGO_REPO=repo.mongodb.org",
+          "command_snippet": "ENV MONGO_PACKAGE=mongodb-org MONGO_REPO=rep...",
+          "command_all": "ENV MONGO_PACKAGE=mongodb-org MONGO_REPO=repo.mongodb.org"
+        },
+        {
+          "type": "ENV",
+          "time": "2020-01-16T03:22:49Z",
+          "is_nop": true,
+          "local_image_exists": false,
+          "layer_index": 0,
+          "size": 0,
+          "params": "MONGO_MAJOR=3.4",
+          "command_snippet": "ENV MONGO_MAJOR=3.4",
+          "command_all": "ENV MONGO_MAJOR=3.4"
+        },
+        {
+          "type": "ENV",
+          "time": "2020-01-25T02:27:43Z",
+          "is_nop": true,
+          "local_image_exists": false,
+          "layer_index": 0,
+          "size": 0,
+          "params": "MONGO_VERSION=3.4.24",
+          "command_snippet": "ENV MONGO_VERSION=3.4.24",
+          "command_all": "ENV MONGO_VERSION=3.4.24"
+        },
+        {
+          "type": "RUN",
+          "time": "2020-01-25T02:27:43Z",
+          "is_nop": false,
+          "local_image_exists": false,
+          "layer_index": 0,
+          "size": 73,
+          "size_human": "73 B",
+          "command_snippet": "RUN echo \"deb http://$MONGO_REPO/apt/ubuntu ...",
+          "command_all": "RUN echo \"deb http://$MONGO_REPO/apt/ubuntu xenial/${MONGO_PACKAGE%-unstable}/$MONGO_MAJOR multiverse\" | tee \"/etc/apt/sources.list.d/${MONGO_PACKAGE%-unstable}.list\"",
+          "system_commands": [
+            "echo \"deb http://$MONGO_REPO/apt/ubuntu xenial/${MONGO_PACKAGE%-unstable}/$MONGO_MAJOR multiverse\" | tee \"/etc/apt/sources.list.d/${MONGO_PACKAGE%-unstable}.list\""
+          ]
+        },
+        {
+          "type": "RUN",
+          "time": "2020-01-25T02:28:05Z",
+          "is_nop": false,
+          "local_image_exists": false,
+          "layer_index": 0,
+          "size": 296737697,
+          "size_human": "297 MB",
+          "command_snippet": "RUN set -x && \\\n\texport DEBIAN_FRONTEND=noni...",
+          "command_all": "RUN set -x && \\\n\texport DEBIAN_FRONTEND=noninteractive && \\\n\tapt-get update && \\\n\tapt-get install -y \t\t${MONGO_PACKAGE}=$MONGO_VERSION \t\t${MONGO_PACKAGE}-server=$MONGO_VERSION \t\t${MONGO_PACKAGE}-shell=$MONGO_VERSION \t\t${MONGO_PACKAGE}-mongos=$MONGO_VERSION \t\t${MONGO_PACKAGE}-tools=$MONGO_VERSION && \\\n\trm -rf /var/lib/apt/lists/* && \\\n\trm -rf /var/lib/mongodb && \\\n\tmv /etc/mongod.conf /etc/mongod.conf.orig",
+          "system_commands": [
+            "set -x",
+            "export DEBIAN_FRONTEND=noninteractive",
+            "apt-get update",
+            "apt-get install -y ${MONGO_PACKAGE}=$MONGO_VERSION ${MONGO_PACKAGE}-server=$MONGO_VERSION ${MONGO_PACKAGE}-shell=$MONGO_VERSION ${MONGO_PACKAGE}-mongos=$MONGO_VERSION ${MONGO_PACKAGE}-tools=$MONGO_VERSION",
+            "rm -rf /var/lib/apt/lists/*",
+            "rm -rf /var/lib/mongodb",
+            "mv /etc/mongod.conf /etc/mongod.conf.orig"
+          ]
+        },
+        {
+          "type": "RUN",
+          "time": "2020-01-25T02:28:06Z",
+          "is_nop": false,
+          "local_image_exists": false,
+          "layer_index": 0,
+          "size": 0,
+          "command_snippet": "RUN mkdir -p /data/db /data/configdb && \\\n\tc...",
+          "command_all": "RUN mkdir -p /data/db /data/configdb && \\\n\tchown -R mongodb:mongodb /data/db /data/configdb",
+          "system_commands": [
+            "mkdir -p /data/db /data/configdb",
+            "chown -R mongodb:mongodb /data/db /data/configdb"
+          ]
+        },
+        {
+          "type": "VOLUME",
+          "time": "2020-01-25T02:28:06Z",
+          "is_nop": true,
+          "local_image_exists": false,
+          "layer_index": 0,
+          "size": 0,
+          "params": "[/data/db /data/configdb]",
+          "command_snippet": "VOLUME [/data/db /data/configdb]",
+          "command_all": "VOLUME [/data/db /data/configdb]"
+        },
+        {
+          "type": "COPY",
+          "time": "2020-01-25T02:28:06Z",
+          "is_nop": true,
+          "local_image_exists": false,
+          "layer_index": 0,
+          "size": 11314,
+          "size_human": "11 kB",
+          "params": "file:021686a669d0d1d1cbb99d6ca84ff8de10577b78ea985b8cdab9d75b347a3bd0 in /usr/local/bin/",
+          "command_snippet": "COPY file:021686a669d0d1d1cbb99d6ca84ff8de10...",
+          "command_all": "COPY file:021686a669d0d1d1cbb99d6ca84ff8de10577b78ea985b8cdab9d75b347a3bd0 /usr/local/bin/",
+          "target": "/usr/local/bin/",
+          "source_type": "file"
+        },
+        {
+          "type": "RUN",
+          "time": "2020-01-25T02:28:07Z",
+          "is_nop": false,
+          "local_image_exists": false,
+          "layer_index": 0,
+          "size": 34,
+          "size_human": "34 B",
+          "command_snippet": "RUN ln -s usr/local/bin/docker-entrypoint.sh...",
+          "command_all": "RUN ln -s usr/local/bin/docker-entrypoint.sh /entrypoint.sh # backwards compat (3.4)",
+          "system_commands": [
+            "ln -s usr/local/bin/docker-entrypoint.sh /entrypoint.sh # backwards compat (3.4)"
+          ]
+        },
+        {
+          "type": "ENTRYPOINT",
+          "time": "2020-01-25T02:28:07Z",
+          "is_nop": true,
+          "is_exec_form": true,
+          "local_image_exists": false,
+          "layer_index": 0,
+          "size": 0,
+          "params": "[\"docker-entrypoint.sh\"]",
+          "command_snippet": "ENTRYPOINT [\"docker-entrypoint.sh\"]",
+          "command_all": "ENTRYPOINT [\"docker-entrypoint.sh\"]"
+        },
+        {
+          "type": "EXPOSE",
+          "time": "2020-01-25T02:28:07Z",
+          "is_nop": true,
+          "local_image_exists": false,
+          "layer_index": 0,
+          "size": 0,
+          "params": "27017",
+          "command_snippet": "EXPOSE 27017",
+          "command_all": "EXPOSE 27017"
+        },
+        {
+          "type": "CMD",
+          "time": "2020-01-25T02:28:07Z",
+          "is_last_instruction": true,
+          "is_nop": true,
+          "is_exec_form": true,
+          "local_image_exists": true,
+          "layer_index": 0,
+          "size": 0,
+          "params": "[\"mongod\"]",
+          "command_snippet": "CMD [\"mongod\"]",
+          "command_all": "CMD [\"mongod\"]",
+          "raw_tags": [
+            "mongo:3.4"
+          ]
+        }
+      ]
+    }
+  ]
+}
