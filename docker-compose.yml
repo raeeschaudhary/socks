@@ -2,7 +2,7 @@ version: '2'
 
 services:
   front-end:
-    image: weaveworksdemos/front-end:0.3.12
+    image: raees1990/front-end.slim:latest
     hostname: front-end
     restart: always
     cap_drop:
@@ -27,7 +27,7 @@ services:
     hostname: edge-router
     restart: always
   catalogue:
-    image: raees1990/catalogue.slim:latest
+    image: weaveworksdemos/catalogue:0.3.5
     hostname: catalogue
     restart: always
     cap_drop:
@@ -44,7 +44,7 @@ services:
       - MYSQL_ALLOW_EMPTY_PASSWORD=true
       - MYSQL_DATABASE=socksdb
   carts:
-    image: weaveworksdemos/carts:0.4.8
+    image: raees1990/carts.slim:latest
     hostname: carts
     restart: always
     cap_drop:
@@ -70,7 +70,7 @@ services:
     tmpfs:
       - /tmp:rw,noexec,nosuid
   orders:
-    image: weaveworksdemos/orders:0.4.7
+    image: raees1990/orders.slim:latest
     hostname: orders
     restart: always
     cap_drop:
@@ -96,7 +96,7 @@ services:
     tmpfs:
       - /tmp:rw,noexec,nosuid
   shipping:
-    image: weaveworksdemos/shipping:0.4.8
+    image: raees1990/shipping.slim:latest
     hostname: shipping
     restart: always
     cap_drop:
@@ -109,7 +109,7 @@ services:
     environment:
       - JAVA_OPTS=-Xms64m -Xmx128m -XX:+UseG1GC -Djava.security.egd=file:/dev/urandom -Dspring.zipkin.enabled=false
   queue-master:
-    image: weaveworksdemos/queue-master:0.3.1
+    image: raees1990/queue-master.slim:latest
     hostname: queue-master
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
@@ -134,7 +134,7 @@ services:
       - DAC_OVERRIDE
     read_only: true
   payment:
-    image: weaveworksdemos/payment:0.4.3
+    image: raees1990/payment.slim:latest
     hostname: payment
     restart: always
     cap_drop:
@@ -154,9 +154,12 @@ services:
     environment:
       - MONGO_HOST=user-db:27017
   user-db:
-    image: weaveworksdemos/user-db:0.4.0
+    image: raees1990/user-db.slim:latest
     hostname: user-db
     restart: always
+    command: mongod --dbpath /data/db
+    volumes:
+        - ./data/mongodb:/data/db
     cap_drop:
       - all
     cap_add:
@@ -167,7 +170,7 @@ services:
     tmpfs:
       - /tmp:rw,noexec,nosuid
   user-sim:
-    image: weaveworksdemos/load-test:0.1.1
+    image: raees1990/load-test.slim:latest
     cap_drop:
       - all
     read_only: true
