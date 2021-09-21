@@ -2,14 +2,14 @@ version: '2'
 
 services:
   front-end:
-    image: raees1990/front-end.slim:latest
+    image: raees1990/front-end:slim
     hostname: front-end
     restart: always
     cap_drop:
       - all
     read_only: true
   edge-router:
-    image: raees1990/edge-router.slim:latest
+    image: raees1990/edge-router:slim
     ports:
       - '80:80'
       - '8080:8080'
@@ -44,7 +44,7 @@ services:
       - MYSQL_ALLOW_EMPTY_PASSWORD=true
       - MYSQL_DATABASE=socksdb
   carts:
-    image: raees1990/carts.slim:latest
+    image: raees1990/carts:slim
     hostname: carts
     restart: always
     cap_drop:
@@ -57,7 +57,7 @@ services:
     environment:
       - JAVA_OPTS=-Xms64m -Xmx128m -XX:+UseG1GC -Djava.security.egd=file:/dev/urandom -Dspring.zipkin.enabled=false
   carts-db:
-    image: raees1990/mongo.slim:latest
+    image: raees1990/mongo:slim
     hostname: carts-db
     restart: always
     cap_drop:
@@ -70,7 +70,7 @@ services:
     tmpfs:
       - /tmp:rw,noexec,nosuid
   orders:
-    image: raees1990/orders.slim:latest
+    image: raees1990/orders:slim
     hostname: orders
     restart: always
     cap_drop:
@@ -83,7 +83,7 @@ services:
     environment:
       - JAVA_OPTS=-Xms64m -Xmx128m -XX:+UseG1GC -Djava.security.egd=file:/dev/urandom -Dspring.zipkin.enabled=false
   orders-db:
-    image: raees1990/mongo.slim:latest
+    image: raees1990/mongo:slim
     hostname: orders-db
     restart: always
     cap_drop:
@@ -96,7 +96,7 @@ services:
     tmpfs:
       - /tmp:rw,noexec,nosuid
   shipping:
-    image: raees1990/shipping.slim:latest
+    image: raees1990/shipping:slim
     hostname: shipping
     restart: always
     cap_drop:
@@ -109,7 +109,7 @@ services:
     environment:
       - JAVA_OPTS=-Xms64m -Xmx128m -XX:+UseG1GC -Djava.security.egd=file:/dev/urandom -Dspring.zipkin.enabled=false
   queue-master:
-    image: raees1990/queue-master.slim:latest
+    image: raees1990/queue-master:slim
     hostname: queue-master
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
@@ -134,7 +134,7 @@ services:
       - DAC_OVERRIDE
     read_only: true
   payment:
-    image: raees1990/payment.slim:latest
+    image: raees1990/payment:slim
     hostname: payment
     restart: always
     cap_drop:
@@ -143,7 +143,7 @@ services:
       - NET_BIND_SERVICE
     read_only: true
   user:
-    image: raees1990/user.slim:latest
+    image: raees1990/user:slim
     hostname: user
     restart: always
     cap_drop:
@@ -154,7 +154,7 @@ services:
     environment:
       - MONGO_HOST=user-db:27017
   user-db:
-    image: raees1990/user-db.slim:latest
+    image: raees1990/user-db:slim
     hostname: user-db
     restart: always
     command: mongod --dbpath /data/db
@@ -170,7 +170,7 @@ services:
     tmpfs:
       - /tmp:rw,noexec,nosuid
   user-sim:
-    image: raees1990/load-test.slim:latest
+    image: weaveworksdemos/load-test:0.1.1
     cap_drop:
       - all
     read_only: true
