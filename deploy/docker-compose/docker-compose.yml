@@ -170,7 +170,7 @@ services:
     tmpfs:
       - /tmp:rw,noexec,nosuid
   user-sim:
-    image: weaveworksdemos/load-test:0.1.1
+    image: weaveworksdemos/load-test:latest
     cap_drop:
       - all
     read_only: true
